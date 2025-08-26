@@ -1,0 +1,9 @@
+.navigation button {
+  background-color: #6e6e6e;
+  color: white;
+}
+
+.navigation ul {
+  list-style: none;
+  display: flex;
+}
