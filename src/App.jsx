@@ -9,22 +9,8 @@ function App() {
     email: "jurol@jurol.com",
     tel: "06.28.62.54.85",
   });
-  const [educationals, setEducationals] = useState([
-    {
-      title: "Baccalaureat",
-      school: "Lycée Thépot",
-      date: "2002",
-    },
-  ]);
-  const [practicals, setPratictals] = useState([
-    {
-      companyName: "WEB 3++",
-      positionTitle: "Développeur web",
-      responsabilities: "Création de la grande messe de minuit",
-      dateFrom: "03/2022",
-      dateUntil: "09/2024",
-    },
-  ]);
+  const [educationals, setEducationals] = useState([]);
+  const [practicals, setPratictals] = useState([]);
   return (
     <div className="container">
       <ControlPanel

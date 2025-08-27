@@ -1,52 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
-  box-sizing: border-box;
-  margin: 0;
   min-height: 100vh;
   background-color: #f9f9f9;
   color: #202020;
 }
 
-.display {
-  flex: 1;
-}
-
-.general-display {
-  padding: 24px;
-  background-color: #00a2c7;
-  color: white;
-}
-
 .container {
   display: flex;
-}
-.educational-display,
-.practical-display {
-  margin: 24px;
-}
-.educational-display h2,
-.practical-display h2 {
-  display: flex;
-  text-decoration: underline;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-error {
-  background-color: #e5484d;
-}
-
-.btn-error:hover {
-  background-color: #dc3e42;
-}
-
-.btn-error:active {
-  background-color: #e5484d;
-}
-
-.email,
-.tel {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }

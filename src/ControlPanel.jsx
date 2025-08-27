@@ -1,22 +1,38 @@
 import { useState } from "react";
 import { Navigation } from "./Navigation/Navigation";
 import { GeneralEdit } from "./sections/GeneralEdit";
-import { EductionalEdit } from "./EductionalEdit";
+import { EductionalEdit } from "./sections/EductionalEdit";
 import { PratictalEdit } from "./sections/PratictalEdit";
-import "./styles/ControlPanel.css"
 
-const ControlPanel = ({ user, setUser }) => {
-  const [navigation, setNavigation] = useState("general");
+const ControlPanel = ({
+  user,
+  setUser,
+  educationals,
+  setEducationals,
+  practicals,
+  setPratictals,
+}) => {
+  const [navigation, setNavigation] = useState("professionel");
   var panel;
   switch (navigation) {
     case "general":
       panel = <GeneralEdit user={user} setUser={setUser} />;
       break;
     case "formation":
-      panel = <EductionalEdit />;
+      panel = (
+        <EductionalEdit
+          educationals={educationals}
+          setEducationals={setEducationals}
+        />
+      );
       break;
     case "professionel":
-      panel = <PratictalEdit />;
+      panel = (
+        <PratictalEdit
+          experiences={practicals}
+          setExperiences={setPratictals}
+        />
+      );
       break;
 
     default:

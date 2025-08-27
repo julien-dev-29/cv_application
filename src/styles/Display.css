@@ -1,0 +1,50 @@
+.display {
+  flex: 1;
+}
+
+.educational-display,
+.practical-display {
+  margin: 24px;
+}
+.educational-display h2,
+.practical-display h2 {
+  padding-top: 16px;
+  display: flex;
+  text-decoration: underline;
+  align-items: center;
+  gap: 8px;
+}
+
+.general-display {
+  padding: 24px;
+  background-color: #00a2c7;
+  color: white;
+}
+
+.d-educational-title,
+.d-practical-title {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.d-educational-title p,
+.d-practical-title p {
+  font-weight: bold;
+}
+.d-educational-title h3,
+.d-practical-title h3 {
+  margin: 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+.email,
+.tel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

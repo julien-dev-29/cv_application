@@ -1,9 +1,19 @@
 .navigation button {
-  background-color: #6e6e6e;
-  color: white;
+  background-color: #222222;
+  border: 1px solid #3a3a3a;
+  color: #b4b4b4;
+}
+
+.navigation button:hover {
+  background-color: #2A2A2A;
+}
+
+.navigation button:active {
+  background-color: #222222;
 }
 
 .navigation ul {
   list-style: none;
   display: flex;
+  justify-content: space-evenly;
 }

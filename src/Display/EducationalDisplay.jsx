@@ -23,10 +23,11 @@ const EducationalDisplay = ({ educationals }) => {
       <ul>
         {educationals.map((experience, index) => (
           <li key={index}>
-            <h3>{experience.school}</h3>
-            <p>
-              {experience.title} - {experience.date}
-            </p>
+            <div className="d-educational-title">
+              <h3>{experience.school}</h3>
+              <p>{experience.date}</p>
+            </div>
+            <p>{experience.title}</p>
           </li>
         ))}
       </ul>

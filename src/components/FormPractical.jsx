@@ -1,30 +1,85 @@
-const FormPractical = ({ setIsOpen, experiences, setExperiences }) => {
-  function handleSubmit(e) {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    setExperiences([
-      ...experiences,
-      {
-        companyName: data.get("companyName"),
-        positionTitle: data.get("positionTitle"),
-        responsabilities: data.get("responsabilities"),
-        dateFrom: data.get("dateFrom"),
-        dateUntil: data.get("dateUntil"),
-      },
-    ]);
-    setIsOpen(false);
-  }
+const FormPractical = ({
+  isEdit,
+  setIsEdit,
+  handleSubmit,
+  index,
+  experiences,
+  setExperiences,
+}) => {
+  var title = isEdit ? <h2>Editer</h2> : <h2>Ajouter une expérience</h2>;
   return (
     <div>
+      {title}
       <form onSubmit={handleSubmit}>
-        <input type="text" name="companyName" />
-        <input type="text" name="positionTitle" />
-        <input type="text" name="responsabilities" />
-        <input type="date" name="dateFrom" />
-        <input type="date" name="dateUntil" />
-        <button type="submit">Submit</button>
-        <button className="btn-error" onClick={() => setIsOpen(false)}>Annuler</button>
+        <div className="input-container">
+          <label htmlFor="companyName">
+            Entreprise
+            <input
+              type="text"
+              id="companyName"
+              name="companyName"
+              defaultValue={(isEdit && experiences[index]?.companyName) || ""}
+            />
+          </label>
+
+          <label htmlFor="companyLocation">
+            Adresse
+            <input
+              type="text"
+              id="companyLocation"
+              name="companyLocation"
+              defaultValue={
+                (isEdit && experiences[index]?.companyLocation) || ""
+              }
+            />
+          </label>
+
+          <label htmlFor="positionTitle">
+            Niveau
+            <input
+              type="text"
+              id="positionTitle"
+              name="positionTitle"
+              defaultValue={(isEdit && experiences[index]?.positionTitle) || ""}
+            />
+          </label>
+
+          <label htmlFor="responsabilities">
+            Responsabilité
+            <input
+              type="text"
+              id="responsabilities"
+              name="responsabilities"
+              defaultValue={
+                (isEdit && experiences[index]?.responsabilities) || ""
+              }
+            />
+          </label>
+
+          <label htmlFor="dateFrom">
+            Date de début
+            <input
+              type="date"
+              id="dateFrom"
+              name="dateFrom"
+              defaultValue={(isEdit && experiences[index]?.dateFrom) || ""}
+            />
+          </label>
+
+          <label htmlFor="dateUntil">
+            Date de fin
+            <input
+              type="date"
+              id="dateUntil"
+              name="dateUntil"
+              defaultValue={(isEdit && experiences[index]?.dateUntil) || ""}
+            />
+          </label>
+        </div>
+
+        {!isEdit && <button type="submit">Submit</button>}
       </form>
+      {isEdit && <button onClick={() => setIsEdit(false)}>Done!</button>}
     </div>
   );
 };
