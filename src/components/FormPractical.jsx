@@ -44,7 +44,7 @@ const FormPractical = ({
           </label>
 
           <label htmlFor="companyLocation">
-            Adresse
+            Lieu
             <input
               required
               type="text"

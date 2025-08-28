@@ -38,6 +38,11 @@
   margin: 0;
 }
 
+.d-practical-body {
+  display: flex;
+  justify-content: space-between;
+}
+
 p {
   margin: 10px 0;
 }

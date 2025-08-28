@@ -1,3 +1,5 @@
+import { formatDate } from "../utils";
+
 const PracticalDisplay = ({ practicals }) => {
   return (
     <div className="practical-display">
@@ -25,12 +27,15 @@ const PracticalDisplay = ({ practicals }) => {
         {practicals.map((exp, index) => (
           <li key={index}>
             <div className="d-practical-title">
-              <h3>{exp.companyName} {exp.companyPosition}</h3>
+              <h3>{exp.companyName}</h3>
               <p>
-                {exp.dateFrom} - {exp.dateUntil}
+                {formatDate(exp.dateFrom)} - {formatDate(exp.dateUntil)}
               </p>
             </div>
-            <p>{exp.positionTitle}</p>
+            <div className="d-practical-body">
+              <p>{exp.positionTitle}</p>
+              <p>{exp.companyLocation}</p>
+            </div>
           </li>
         ))}
       </ul>

@@ -1,3 +1,5 @@
+import {formatDate} from '../utils'
+
 const EducationalDisplay = ({ educationals }) => {
   return (
     <div className="educational-display">
@@ -25,7 +27,7 @@ const EducationalDisplay = ({ educationals }) => {
           <li key={index}>
             <div className="d-educational-title">
               <h3>{experience.school}</h3>
-              <p>{experience.date}</p>
+              <p>{formatDate(experience.date)}</p>
             </div>
             <p>{experience.title}</p>
           </li>
