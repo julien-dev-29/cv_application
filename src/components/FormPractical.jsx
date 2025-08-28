@@ -6,7 +6,11 @@ const FormPractical = ({
   experiences,
   setExperiences,
 }) => {
-  var title = isEdit ? <h2>Editer</h2> : <h2>Ajouter une expérience</h2>;
+  var title = isEdit ? (
+    <h2>Editer {experiences[index].companyName}</h2>
+  ) : (
+    <h2>Ajouter une expérience professionnelles</h2>
+  );
 
   /**
    *
@@ -25,11 +29,12 @@ const FormPractical = ({
   return (
     <div>
       {title}
-      <form onSubmit={handleSubmit}>
+      <form id="pratical-form" onSubmit={handleSubmit}>
         <div className="input-container">
           <label htmlFor="companyName">
             Entreprise
             <input
+              required
               type="text"
               id="companyName"
               name="companyName"
@@ -41,6 +46,7 @@ const FormPractical = ({
           <label htmlFor="companyLocation">
             Adresse
             <input
+              required
               type="text"
               id="companyLocation"
               name="companyLocation"
@@ -52,8 +58,9 @@ const FormPractical = ({
           </label>
 
           <label htmlFor="positionTitle">
-            Niveau
+            Poste occupé
             <input
+              required
               type="text"
               id="positionTitle"
               name="positionTitle"
@@ -62,22 +69,10 @@ const FormPractical = ({
             />
           </label>
 
-          <label htmlFor="responsabilities">
-            Responsabilité
-            <input
-              type="text"
-              id="responsabilities"
-              name="responsabilities"
-              defaultValue={
-                (isEdit && experiences[index]?.responsabilities) || ""
-              }
-              onChange={(e) => handleChange("positionTitle", e.target.value)}
-            />
-          </label>
-
           <label htmlFor="dateFrom">
             Date de début
             <input
+              required
               type="date"
               id="dateFrom"
               name="dateFrom"
@@ -89,6 +84,7 @@ const FormPractical = ({
           <label htmlFor="dateUntil">
             Date de fin
             <input
+              required
               type="date"
               id="dateUntil"
               name="dateUntil"
@@ -100,7 +96,20 @@ const FormPractical = ({
 
         {!isEdit && <button type="submit">Submit</button>}
       </form>
-      {isEdit && <button onClick={() => setIsEdit(false)}>Done!</button>}
+      {isEdit && (
+        <button
+          onClick={() => {
+            setIsEdit(false);
+            /**
+             * @type {HTMLFormElement}
+             */
+            const form = document.querySelector("#pratical-form");
+            form.reset();
+          }}
+        >
+          Done!
+        </button>
+      )}
     </div>
   );
 };

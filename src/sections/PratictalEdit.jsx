@@ -35,7 +35,6 @@ const PratictalEdit = ({ experiences, setExperiences }) => {
         companyName: data.get("companyName"),
         companyLocation: data.get("companyLocation"),
         positionTitle: data.get("positionTitle"),
-        responsabilities: data.get("responsabilities"),
         dateFrom: data.get("dateFrom"),
         dateUntil: data.get("dateUntil"),
       },
@@ -71,6 +70,7 @@ const PratictalEdit = ({ experiences, setExperiences }) => {
           ))}
         </tbody>
       </table>
+      <hr />
       <FormPractical
         index={index}
         setIsEdit={setIsEdit}

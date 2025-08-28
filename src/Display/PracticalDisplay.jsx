@@ -25,11 +25,12 @@ const PracticalDisplay = ({ practicals }) => {
         {practicals.map((exp, index) => (
           <li key={index}>
             <div className="d-practical-title">
-              <h3>{exp.positionTitle}</h3>
-              <p>{exp.dateFrom} - {exp.dateUntil}</p>
+              <h3>{exp.companyName} {exp.companyPosition}</h3>
+              <p>
+                {exp.dateFrom} - {exp.dateUntil}
+              </p>
             </div>
-            <p>{exp.companyName}</p>
-            <p>{exp.responsabilities}</p>
+            <p>{exp.positionTitle}</p>
           </li>
         ))}
       </ul>

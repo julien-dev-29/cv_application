@@ -6,7 +6,7 @@ const EducForm = ({
   setEducationals,
   index,
 }) => {
-  var title = isEdit ? <h2>Editer</h2> : <h2>Ajouter une expérience</h2>;
+  var title = isEdit ? <h2>Editer</h2> : <h2>Ajouter une formation</h2>;
 
   /**
    * Quit the edit mode
@@ -38,6 +38,7 @@ const EducForm = ({
           <label htmlFor="title">
             Titre
             <input
+              required
               type="text"
               id="title"
               defaultValue={isEdit ? educationals[index]?.title || "" : ""}
@@ -48,6 +49,7 @@ const EducForm = ({
           <label htmlFor="date">
             Date
             <input
+              required
               type="date"
               id="date"
               defaultValue={isEdit ? educationals[index]?.date || "" : ""}
@@ -58,6 +60,7 @@ const EducForm = ({
           <label htmlFor="school">
             Lieu
             <input
+              required
               type="text"
               id="school"
               defaultValue={isEdit ? educationals[index]?.school || "" : ""}

@@ -94,6 +94,13 @@ button:focus {
   gap: 16px;
 }
 
+hr {
+  height: 1px;
+  margin: 24px 0;
+  color: #3a3a3a;
+  background: #3a3a3a;
+  border: none;
+}
 /* Educational informations */
 
 .educational {
@@ -111,7 +118,13 @@ button:focus {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #3a3a3a;
+  background-color: #191919;
   color: #eeeeee;
+}
+
+.educational table button,
+.practical table button {
+  margin-left: 8px;
 }
 
 .educational td,

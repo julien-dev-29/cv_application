@@ -4,7 +4,7 @@ import { EducForm } from "../components/EducForm";
 const EductionalEdit = ({ educationals, setEducationals }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [index, setIndex] = useState(null);
-  
+
   /**
    *
    * @param {Number} index
@@ -69,6 +69,7 @@ const EductionalEdit = ({ educationals, setEducationals }) => {
           ))}
         </tbody>
       </table>
+      <hr />
       <EducForm
         handleSubmit={handleSubmit}
         isEdit={isEdit}

@@ -12,7 +12,7 @@ const ControlPanel = ({
   practicals,
   setPratictals,
 }) => {
-  const [navigation, setNavigation] = useState("professionel");
+  const [navigation, setNavigation] = useState("general");
   var panel;
   switch (navigation) {
     case "general":
