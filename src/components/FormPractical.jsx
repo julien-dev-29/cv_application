@@ -7,6 +7,21 @@ const FormPractical = ({
   setExperiences,
 }) => {
   var title = isEdit ? <h2>Editer</h2> : <h2>Ajouter une expérience</h2>;
+
+  /**
+   *
+   * @param {String} field
+   * @param {*} value
+   */
+  const handleChange = (field, value) => {
+    if (isEdit) {
+      setExperiences((prev) =>
+        prev.map((item, i) =>
+          i === index ? { ...item, [field]: value } : item
+        )
+      );
+    }
+  };
   return (
     <div>
       {title}
@@ -19,6 +34,7 @@ const FormPractical = ({
               id="companyName"
               name="companyName"
               defaultValue={(isEdit && experiences[index]?.companyName) || ""}
+              onChange={(e) => handleChange("companyName", e.target.value)}
             />
           </label>
 
@@ -31,6 +47,7 @@ const FormPractical = ({
               defaultValue={
                 (isEdit && experiences[index]?.companyLocation) || ""
               }
+              onChange={(e) => handleChange("companyLocation", e.target.value)}
             />
           </label>
 
@@ -41,6 +58,7 @@ const FormPractical = ({
               id="positionTitle"
               name="positionTitle"
               defaultValue={(isEdit && experiences[index]?.positionTitle) || ""}
+              onChange={(e) => handleChange("positionTitle", e.target.value)}
             />
           </label>
 
@@ -53,6 +71,7 @@ const FormPractical = ({
               defaultValue={
                 (isEdit && experiences[index]?.responsabilities) || ""
               }
+              onChange={(e) => handleChange("positionTitle", e.target.value)}
             />
           </label>
 
@@ -63,6 +82,7 @@ const FormPractical = ({
               id="dateFrom"
               name="dateFrom"
               defaultValue={(isEdit && experiences[index]?.dateFrom) || ""}
+              onChange={(e) => handleChange("dateFrom", e.target.value)}
             />
           </label>
 
@@ -72,6 +92,7 @@ const FormPractical = ({
               type="date"
               id="dateUntil"
               name="dateUntil"
+              onChange={(e) => handleChange("dateUntil", e.target.value)}
               defaultValue={(isEdit && experiences[index]?.dateUntil) || ""}
             />
           </label>

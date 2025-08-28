@@ -5,7 +5,7 @@
 }
 
 .navigation button:hover {
-  background-color: #2A2A2A;
+  background-color: #2a2a2a;
 }
 
 .navigation button:active {
@@ -16,4 +16,12 @@
   list-style: none;
   display: flex;
   justify-content: space-evenly;
+}
+
+.navigation {
+  padding: 24px;
+}
+
+.isSelected {
+  border: 1px solid #00A2C7 !important;
 }

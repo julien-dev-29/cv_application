@@ -65,16 +65,6 @@ const EducForm = ({
               name="school"
             />
           </label>
-          <label htmlFor="content">
-            Contenu
-            <input
-              type="text"
-              id="content"
-              defaultValue={isEdit ? educationals[index]?.content || "" : ""}
-              onChange={(e) => handleChange("content", e.target.value)}
-              name="content"
-            />
-          </label>
         </div>
         {!isEdit && <button type="submit">Ajouter</button>}
       </form>

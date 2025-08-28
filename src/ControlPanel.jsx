@@ -40,7 +40,7 @@ const ControlPanel = ({
   }
   return (
     <section className="control-panel">
-      <Navigation setNavigation={setNavigation} />
+      <Navigation navigation={navigation} setNavigation={setNavigation} />
       {panel}
     </section>
   );

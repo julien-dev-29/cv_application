@@ -33,13 +33,14 @@ const PratictalEdit = ({ experiences, setExperiences }) => {
       ...experiences,
       {
         companyName: data.get("companyName"),
-        companyPosition: data.get("companyPosition"),
+        companyLocation: data.get("companyLocation"),
         positionTitle: data.get("positionTitle"),
         responsabilities: data.get("responsabilities"),
         dateFrom: data.get("dateFrom"),
         dateUntil: data.get("dateUntil"),
       },
     ]);
+    e.target.reset();
   }
   return (
     <div className="practical">
@@ -56,7 +57,7 @@ const PratictalEdit = ({ experiences, setExperiences }) => {
           {experiences.map((exp, index) => (
             <tr key={index}>
               <td>{exp.companyName}</td>
-              <td>{exp.companyPosition}</td>
+              <td>{exp.companyLocation}</td>
               <td>
                 <button onClick={() => handleEdit(index)}>Edit</button>
                 <button

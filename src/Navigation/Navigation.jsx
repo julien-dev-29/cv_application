@@ -1,11 +1,17 @@
 import "../styles/Navigation.css";
 
-const Navigation = ({ setNavigation }) => {
+const Navigation = ({ navigation, setNavigation }) => {
+  const generalClass = navigation === "general" ? "isSelected" : "";
+  const formationClass = navigation === "formation" ? "isSelected" : "";
+  const professionelClass = navigation === "professionel" ? "isSelected" : "";
   return (
     <nav className="navigation">
       <ul>
         <li>
-          <button onClick={() => setNavigation("general")}>
+          <button
+            className={generalClass}
+            onClick={() => setNavigation("general")}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -25,7 +31,10 @@ const Navigation = ({ setNavigation }) => {
           </button>
         </li>
         <li>
-          <button onClick={() => setNavigation("formation")}>
+          <button
+            className={formationClass}
+            onClick={() => setNavigation("formation")}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -45,7 +54,10 @@ const Navigation = ({ setNavigation }) => {
           </button>
         </li>
         <li>
-          <button onClick={() => setNavigation("professionel")}>
+          <button
+            className={professionelClass}
+            onClick={() => setNavigation("professionel")}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
