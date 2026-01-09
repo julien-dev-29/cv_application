@@ -103,3 +103,10 @@ export const InputGroupContainer = styled.div`
   display: flex;
   gap: 16px;
 `;
+
+export const LeftContainer = styled.div`
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+`;

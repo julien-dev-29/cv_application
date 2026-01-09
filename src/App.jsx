@@ -6,6 +6,7 @@ import Toolbar from "./components/Toolbar";
 import GeneralBlock from "./components/GeneralBlock";
 import EducationalBlock from "./components/EducationalBlock";
 import EducationalForm from "./components/EductionalForm";
+import { LeftContainer } from "./styled-components/styled-components";
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,12 +17,6 @@ const AppContainer = styled.div`
 const Container = styled.div`
   display: flex;
   gap: 16px;
-`;
-const LeftContainer = styled.div`
-  flex: 1;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
 `;
 
 function App() {
@@ -69,7 +64,7 @@ function App() {
             <EducationalBlock setShowEducationalForm={setShowEductionalForm} />
           )}
         </LeftContainer>
-        <Render name={name} email={email} tel={tel} entries={entries}/>
+        <Render name={name} email={email} tel={tel} entries={entries} />
       </Container>
     </AppContainer>
   );
