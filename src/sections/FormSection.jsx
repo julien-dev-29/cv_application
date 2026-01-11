@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import General from "../components/General";
+import PersonalForm from "../components/personal/PersonalForm";
 const StyledForm = styled.div`
   flex: 1;
   border: 1px solid #d9d9d9;
@@ -8,23 +8,15 @@ const StyledForm = styled.div`
   padding: 32px;
 `;
 export default function FormSection({
-  name,
-  setName,
-  email,
-  setEmail,
-  tel,
-  setTel,
+  personal,
+  setPersonal,
   setShowGeneralForm,
 }) {
   return (
     <StyledForm>
-      <General
-        name={name}
-        setName={setName}
-        email={email}
-        setEmail={setEmail}
-        tel={tel}
-        setTel={setTel}
+      <PersonalForm
+        personal={personal}
+        setPersonal={setPersonal}
         setShowGeneralForm={setShowGeneralForm}
       />
     </StyledForm>

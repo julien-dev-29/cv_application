@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Mail, MapPinCheckInside, Phone, SquarePen } from "lucide-react";
+import { StyledIconButton } from "../../styled-components/styled-components";
 const StyledGeneralBlock = styled.div`
   flex: 1;
   display: flex;
@@ -16,45 +17,34 @@ export const ContainerLeft = styled.div`
   gap: 16px;
 `;
 
-export const StyledButton = styled.button`
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  border-radius: 50%;
-  background-color: #00a2c7;
-  color: white;
-  border: none;
-`;
 const InfoContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
 `;
 export const ContainerRight = styled.div``;
-export default function GeneralBlock({ setShowGeneralForm, name, email, tel }) {
+export default function PersonalBlock({ setShowGeneralForm, personal }) {
   return (
     <StyledGeneralBlock>
       <ContainerLeft>
         <h2>Personal</h2>
         <InfoContainer>
           <Mail />
-          {name}
+          {personal?.email ?? ""}
         </InfoContainer>
         <InfoContainer>
           <Phone />
-          {email}
+          {personal?.tel ?? ""}
         </InfoContainer>
         <InfoContainer>
           <MapPinCheckInside />
-          {tel}
+          {personal?.location ?? ""}
         </InfoContainer>
       </ContainerLeft>
       <ContainerRight>
-        <StyledButton onClick={() => setShowGeneralForm((prev) => !prev)}>
+        <StyledIconButton onClick={() => setShowGeneralForm((prev) => !prev)}>
           <SquarePen />
-        </StyledButton>
+        </StyledIconButton>
       </ContainerRight>
     </StyledGeneralBlock>
   );

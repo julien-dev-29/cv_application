@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Mail, MapPinCheckInside, Phone } from "lucide-react";
 const StyledRender = styled.div`
   flex: 1;
   border: 1px solid #d9d9d9;
@@ -6,36 +7,135 @@ const StyledRender = styled.div`
   background-color: #fcfcfc;
   padding: 32px;
 `;
-export default function Render({ name, email, tel, entries }) {
+export default function Render({ personal, entries }) {
   return (
     <StyledRender>
-      <RenderPersonal name={name} email={email} tel={tel} />
+      <RenderPersonal personal={personal} />
       <RenderEducational entries={entries} />
     </StyledRender>
   );
 }
 
-function RenderPersonal({ name, email, tel }) {
+function RenderPersonal({ personal }) {
+  if (!personal) return;
   return (
     <div>
-      <p>{name}</p>
-      <p>{email}</p>
-      <p>{tel}</p>
+      <div
+        style={{
+          fontWeight: "bold",
+        }}
+      >
+        {personal.name}
+      </div>
+      <div
+        style={{
+          marginTop: "16px",
+          display: "flex",
+          justifyContent: "start",
+          gap: "16px",
+        }}
+      >
+        {personal.email && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <Mail size={16} />
+            {personal.email}
+          </div>
+        )}
+
+        {personal.tel && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <Phone size={16} />
+            {personal.tel}
+          </div>
+        )}
+
+        {personal.location && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <MapPinCheckInside size={16} />
+            {personal.location}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
 
 function RenderEducational({ entries }) {
+  if (entries.length === 0) return;
+  return (
+    <div
+      style={{
+        marginTop: "16px",
+      }}
+    >
+      <h3>Education</h3>
+      <hr />
+      {entries?.map((e) => (
+        <EducationalEntryItem key={e.id} entry={e} />
+      ))}
+    </div>
+  );
+}
+
+function EducationalEntryItem({ entry }) {
+  if (!entry) return;
   return (
     <div>
-      {entries?.map((e) => (
-        <div key={e.id}>
-          <p>{e.school}</p>
-          <p>{e.degree}</p>
-          <p>{e.startDate}</p>
-          <p>{e.endDate}</p>
-        </div>
-      ))}
+      <Flex2B justifyContent="space-between" marginTop="12px">
+        <Flex2B>
+          <div
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            {entry.degree},
+          </div>
+          <i>{entry.school}</i>
+        </Flex2B>
+        <Flex2B>
+          <p>{entry.startDate}</p>
+          <p>{entry.endDate}</p>
+        </Flex2B>
+      </Flex2B>
+      <Flex2B justifyContent="end" marginTop="8px">
+        {entry.location}
+      </Flex2B>
+    </div>
+  );
+}
+
+function Flex2B({ children, direction, justifyContent, marginTop, ...props }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: direction ?? "row",
+        justifyContent: justifyContent ?? "center",
+        alignItems: "center",
+        marginTop: marginTop ?? "0px",
+        gap: "8px",
+      }}
+      {...props}
+    >
+      {children}
     </div>
   );
 }

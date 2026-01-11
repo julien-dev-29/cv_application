@@ -1,39 +1,57 @@
+import { Trash } from "lucide-react";
 import {
   AddButton,
+  Flex,
   InputContainer,
   InputGroupContainer,
   StyledForm,
+  StyledIconDeleteButton,
   StyledInput,
   StyledLabel,
-} from "../styled-components/styled-components";
+  StyledTextarea,
+} from "../../../styled-components/styled-components";
 
-export default function EntryForm({ entry, setEntries, setShowEntryForm }) {
+export default function PracticalEntryForm({
+  entry,
+  setEntries,
+  setShowEntryForm,
+}) {
+  function handleDeleteEntry() {
+    setEntries((prev) => {
+      return prev.filter((e) => e.id !== entry.id);
+    });
+  }
   return (
     <StyledForm onSubmit={() => setShowEntryForm(false)}>
-      <h2>Edit Entry</h2>
+      <Flex>
+        <h2>Edit Entry</h2>
+        <StyledIconDeleteButton onClick={handleDeleteEntry}>
+          <Trash />
+        </StyledIconDeleteButton>
+      </Flex>
       <InputContainer>
-        <StyledLabel htmlFor="degree">Degree</StyledLabel>
+        <StyledLabel htmlFor="jobTitle">Job Title</StyledLabel>
         <StyledInput
           type="text"
-          value={entry.degree}
+          value={entry.jobTitle}
           onChange={(event) =>
             setEntries((prev) => {
               return prev.map((e) =>
-                e.id == entry.id ? { ...e, degree: event.target.value } : e
+                e.id == entry.id ? { ...e, jobTitle: event.target.value } : e
               );
             })
           }
         />
       </InputContainer>
       <InputContainer>
-        <StyledLabel htmlFor="school">School</StyledLabel>
+        <StyledLabel htmlFor="employer">Employer</StyledLabel>
         <StyledInput
           type="text"
-          value={entry.school}
+          value={entry.employer}
           onChange={(event) =>
             setEntries((prev) => {
               return prev.map((e) =>
-                e.id == entry.id ? { ...e, school: event.target.value } : e
+                e.id == entry.id ? { ...e, employer: event.target.value } : e
               );
             })
           }
@@ -83,6 +101,21 @@ export default function EntryForm({ entry, setEntries, setShowEntryForm }) {
           />
         </InputContainer>
       </InputGroupContainer>
+      <InputContainer>
+        <StyledLabel htmlFor="description">Description</StyledLabel>
+        <StyledTextarea
+          id="description"
+          rows={10}
+          value={entry.description}
+          onChange={(event) =>
+            setEntries((prev) => {
+              return prev.map((e) =>
+                e.id == entry.id ? { ...e, description: event.target.value } : e
+              );
+            })
+          }
+        ></StyledTextarea>
+      </InputContainer>
       <AddButton>Done</AddButton>
     </StyledForm>
   );

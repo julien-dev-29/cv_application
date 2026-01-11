@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import { AddButton, Card, Flex } from "../styled-components/styled-components";
-import EntryForm from "./EntryForm";
-const StyledCard = styled(Card)`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
+import {
+  AddButton,
+  Card,
+  Flex,
+  FlexStart,
+  StyledCard,
+} from "../../styled-components/styled-components";
+import EducationalEntryForm from "./entries/EducationalEntryForm";
+import { GraduationCap } from "lucide-react";
+
 export default function EductionalForm({
   entries,
   setEntries,
@@ -18,7 +21,10 @@ export default function EductionalForm({
     <StyledCard>
       {!showEntryForm ? (
         <>
-          <h2>EductionalForm</h2>
+          <FlexStart>
+            <GraduationCap />
+            <h2>Education</h2>
+          </FlexStart>
           {entries?.map((entry) => (
             <EntryItem
               key={entry.id}
@@ -44,7 +50,7 @@ export default function EductionalForm({
           </AddButton>
         </>
       ) : (
-        <EntryForm
+        <EducationalEntryForm
           entry={currentEntry}
           setEntries={setEntries}
           setShowEntryForm={setShowEntryForm}
@@ -67,7 +73,7 @@ function EntryItem({ entry, setCurrentEntry, setShowEntryForm }) {
       }}
     >
       <Flex>
-        <div>{entry.id}</div>
+        <div>{entry.degree ?? "new"}</div>
       </Flex>
     </EntryCard>
   );
