@@ -7,11 +7,16 @@ const StyledRender = styled.div`
   background-color: #fcfcfc;
   padding: 32px;
 `;
-export default function Render({ personal, entries }) {
+export default function Render({
+  personal,
+  educationalEntries,
+  practicalEntries,
+}) {
   return (
     <StyledRender>
       <RenderPersonal personal={personal} />
-      <RenderEducational entries={entries} />
+      <RenderEducational entries={educationalEntries} />
+      <RenderPractical entries={practicalEntries} />
     </StyledRender>
   );
 }
@@ -27,14 +32,7 @@ function RenderPersonal({ personal }) {
       >
         {personal.name}
       </div>
-      <div
-        style={{
-          marginTop: "16px",
-          display: "flex",
-          justifyContent: "start",
-          gap: "16px",
-        }}
-      >
+      <Flex2B justifyContent="start" marginTop="16px" gap="12px">
         {personal.email && (
           <div
             style={{
@@ -73,13 +71,14 @@ function RenderPersonal({ personal }) {
             {personal.location}
           </div>
         )}
-      </div>
+      </Flex2B>
     </div>
   );
 }
 
 function RenderEducational({ entries }) {
   if (entries.length === 0) return;
+
   return (
     <div
       style={{
@@ -98,7 +97,7 @@ function RenderEducational({ entries }) {
 function EducationalEntryItem({ entry }) {
   if (!entry) return;
   return (
-    <div>
+    <>
       <Flex2B justifyContent="space-between" marginTop="12px">
         <Flex2B>
           <div
@@ -118,11 +117,57 @@ function EducationalEntryItem({ entry }) {
       <Flex2B justifyContent="end" marginTop="8px">
         {entry.location}
       </Flex2B>
-    </div>
+    </>
   );
 }
 
-function Flex2B({ children, direction, justifyContent, marginTop, ...props }) {
+function RenderPractical({ entries }) {
+  if (entries.length === 0) return;
+  return (
+    <>
+      <h3>Professional Experience</h3>
+      <hr />
+      {entries?.map((e) => (
+        <PracticalEntryItem key={e.id} entry={e} />
+      ))}
+    </>
+  );
+}
+
+function PracticalEntryItem({ entry }) {
+  return (
+    <>
+      <Flex2B justifyContent="space-between" marginTop="12px">
+        <Flex2B>
+          <div
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            {entry.jobTitle},
+          </div>
+          <i>{entry.employer}</i>
+        </Flex2B>
+        <Flex2B>
+          <p>{entry.startDate}</p>
+          <p>{entry.endDate}</p>
+        </Flex2B>
+      </Flex2B>
+      <Flex2B justifyContent="end" marginTop="8px">
+        {entry.location}
+      </Flex2B>
+    </>
+  );
+}
+
+function Flex2B({
+  children,
+  direction,
+  justifyContent,
+  marginTop,
+  gap,
+  ...props
+}) {
   return (
     <div
       style={{
@@ -131,7 +176,7 @@ function Flex2B({ children, direction, justifyContent, marginTop, ...props }) {
         justifyContent: justifyContent ?? "center",
         alignItems: "center",
         marginTop: marginTop ?? "0px",
-        gap: "8px",
+        gap: gap ?? "8px",
       }}
       {...props}
     >

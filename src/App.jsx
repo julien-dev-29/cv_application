@@ -1,14 +1,12 @@
 import styled from "styled-components";
 import Render from "./sections/Render";
 import { useState } from "react";
-import FormSection from "./sections/FormSection";
 import Toolbar from "./components/Toolbar";
 import PersonalBlock from "./components/personal/PersonalBlock";
-import EducationalBlock from "./components/education/EducationalBlock";
-import EducationalForm from "./components/education/EductionalForm";
-import { LeftContainer } from "./styled-components/styled-components";
+import EducationalForm from "./components/education/EducationalForm";
 import PracticalForm from "./components/practical/PracticalForm";
-import PracticalBlock from "./components/practical/PracticalBlock";
+import { LeftContainer } from "./styled-components/styled-components";
+import PersonalForm from "./components/personal/PersonalForm";
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,10 +22,8 @@ const Container = styled.div`
 function App() {
   const [personal, setPersonal] = useState({});
   const [showGeneralForm, setShowGeneralForm] = useState(false);
-  const [showEductionalForm, setShowEductionalForm] = useState(false);
   const [showEductionalEntryForm, setShowEductionalEntryForm] = useState(false);
   const [showPracticalEntryForm, setShowPraticalEntryForm] = useState(false);
-  const [showPracticalForm, setShowPracticalForm] = useState(false);
   const [educationalEntries, setEducationalEntries] = useState([]);
   const [practicalEntries, setPracticalEntries] = useState([]);
   const [currentEducationalEntry, setCurrentEducationalEntry] = useState(null);
@@ -38,7 +34,7 @@ function App() {
       <Container>
         <LeftContainer>
           {showGeneralForm ? (
-            <FormSection
+            <PersonalForm
               personal={personal}
               setPersonal={setPersonal}
               setShowGeneralForm={setShowGeneralForm}
@@ -49,32 +45,28 @@ function App() {
               personal={personal}
             />
           )}
-          {showEductionalForm ? (
-            <EducationalForm
-              entries={educationalEntries}
-              setEntries={setEducationalEntries}
-              showEntryForm={showEductionalEntryForm}
-              currentEntry={currentEducationalEntry}
-              setCurrentEntry={setCurrentEducationalEntry}
-              setShowEntryForm={setShowEductionalEntryForm}
-            />
-          ) : (
-            <EducationalBlock setShowEducationalForm={setShowEductionalForm} />
-          )}
-          {showPracticalForm ? (
-            <PracticalForm
-              entries={practicalEntries}
-              setEntries={setPracticalEntries}
-              showEntryForm={showPracticalEntryForm}
-              setShowEntryForm={setShowPraticalEntryForm}
-              currentEntry={currentPracticalEntry}
-              setCurrentEntry={setCurrentPracticalEntry}
-            />
-          ) : (
-            <PracticalBlock setShowPracticalForm={setShowPracticalForm} />
-          )}
+          <EducationalForm
+            entries={educationalEntries}
+            setEntries={setEducationalEntries}
+            showEntryForm={showEductionalEntryForm}
+            currentEntry={currentEducationalEntry}
+            setCurrentEntry={setCurrentEducationalEntry}
+            setShowEntryForm={setShowEductionalEntryForm}
+          />
+          <PracticalForm
+            entries={practicalEntries}
+            setEntries={setPracticalEntries}
+            showEntryForm={showPracticalEntryForm}
+            setShowEntryForm={setShowPraticalEntryForm}
+            currentEntry={currentPracticalEntry}
+            setCurrentEntry={setCurrentPracticalEntry}
+          />
         </LeftContainer>
-        <Render personal={personal} entries={educationalEntries} />
+        <Render
+          personal={personal}
+          educationalEntries={educationalEntries}
+          practicalEntries={practicalEntries}
+        />
       </Container>
     </AppContainer>
   );

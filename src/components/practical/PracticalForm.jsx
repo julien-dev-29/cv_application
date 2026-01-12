@@ -50,6 +50,7 @@ export default function PracticalForm({
         </>
       ) : (
         <PracticalEntryForm
+          key={currentEntry.id}
           entry={currentEntry}
           setEntries={setEntries}
           setShowEntryForm={setShowEntryForm}
@@ -72,7 +73,7 @@ function EntryItem({ entry, setCurrentEntry, setShowEntryForm }) {
       }}
     >
       <Flex>
-        <div>{entry.degree ?? "new"}</div>
+        <div>{entry.jobTitle ?? "new"}</div>
       </Flex>
     </EntryCard>
   );

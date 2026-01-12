@@ -63,14 +63,14 @@ export const FlexStart = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
-  gap: 16px;
+  gap: 12px;
 `;
 
 export const StyledInput = styled.input`
   padding: 8px;
   border-radius: ${borderRadiusMd};
   border: 1px solid ${borderColor};
-  color: #8d8d8d;
+  color: #6b6b6b;
   &:focus {
     border: 1px solid transparent;
     outline: 2px solid #5eb1ef;

@@ -5,99 +5,134 @@ import {
   InputContainer,
   InputGroupContainer,
   StyledForm,
-  StyledIconButton,
   StyledIconDeleteButton,
   StyledInput,
   StyledLabel,
 } from "../../../styled-components/styled-components";
+import { useState } from "react";
 
-export default function EntryForm({ entry, setEntries, setShowEntryForm }) {
+export default function EducationalEntryForm({
+  entry,
+  setEntries,
+  setShowEntryForm,
+}) {
+  const [form, setForm] = useState(() => ({
+    degree: entry.degree ?? "",
+    school: entry.school ?? "",
+    startDate: entry.startDate ?? "",
+    endDate: entry.endDate ?? "",
+    location: entry.location ?? "",
+  }));
   function handleDeleteEntry() {
     setEntries((prev) => {
+      setShowEntryForm(false);
       return prev.filter((e) => e.id !== entry.id);
     });
   }
   return (
-    <StyledForm onSubmit={() => setShowEntryForm(false)}>
+    <div>
       <Flex>
         <h2>Edit Entry</h2>
         <StyledIconDeleteButton onClick={handleDeleteEntry}>
           <Trash />
         </StyledIconDeleteButton>
       </Flex>
-      <InputContainer>
-        <StyledLabel htmlFor="degree">Degree</StyledLabel>
-        <StyledInput
-          type="text"
-          value={entry.degree}
-          onChange={(event) =>
-            setEntries((prev) => {
-              return prev.map((e) =>
-                e.id == entry.id ? { ...e, degree: event.target.value } : e
-              );
-            })
-          }
-        />
-      </InputContainer>
-      <InputContainer>
-        <StyledLabel htmlFor="school">School</StyledLabel>
-        <StyledInput
-          type="text"
-          value={entry.school}
-          onChange={(event) =>
-            setEntries((prev) => {
-              return prev.map((e) =>
-                e.id == entry.id ? { ...e, school: event.target.value } : e
-              );
-            })
-          }
-        />
-      </InputContainer>
-      <InputGroupContainer>
+      <StyledForm
+        onSubmit={(e) => {
+          e.preventDefault();
+          setShowEntryForm(false);
+        }}
+      >
         <InputContainer>
-          <StyledLabel htmlFor="startDate">Start Date</StyledLabel>
+          <StyledLabel htmlFor="degree">Degree</StyledLabel>
           <StyledInput
-            type="date"
-            value={entry.startDate}
-            onChange={(event) =>
-              setEntries((prev) => {
-                return prev.map((e) =>
-                  e.id == entry.id ? { ...e, startDate: event.target.value } : e
-                );
-              })
-            }
-          />
-        </InputContainer>
-        <InputContainer>
-          <StyledLabel htmlFor="endDate">End Date</StyledLabel>
-          <StyledInput
-            type="date"
-            value={entry.endDate}
-            onChange={(event) =>
-              setEntries((prev) => {
-                return prev.map((e) =>
-                  e.id == entry.id ? { ...e, endDate: event.target.value } : e
-                );
-              })
-            }
-          />
-        </InputContainer>
-        <InputContainer>
-          <StyledLabel htmlFor="location">Location</StyledLabel>
-          <StyledInput
+            id="degree"
             type="text"
-            value={entry.location}
-            onChange={(event) =>
-              setEntries((prev) => {
-                return prev.map((e) =>
-                  e.id == entry.id ? { ...e, location: event.target.value } : e
-                );
-              })
-            }
+            value={form.degree}
+            onChange={(event) => {
+              setForm((prev) => ({ ...prev, degree: event.target.value }));
+              setEntries((prev) =>
+                prev.map((e) =>
+                  e.id === entry.id ? { ...e, degree: event.target.value } : e
+                )
+              );
+            }}
           />
         </InputContainer>
-      </InputGroupContainer>
-      <AddButton>Done</AddButton>
-    </StyledForm>
+        <InputContainer>
+          <StyledLabel htmlFor="school">School</StyledLabel>
+          <StyledInput
+            id="school"
+            type="text"
+            value={form.school}
+            onChange={(event) => {
+              setForm((prev) => ({ ...prev, school: event.target.value }));
+              setEntries((prev) =>
+                prev.map((e) =>
+                  e.id === entry.id ? { ...e, school: event.target.value } : e
+                )
+              );
+            }}
+          />
+        </InputContainer>
+        <InputGroupContainer>
+          <InputContainer>
+            <StyledLabel htmlFor="startDate">Start Date</StyledLabel>
+            <StyledInput
+              id="startDate"
+              type="date"
+              value={form.startDate}
+              onChange={(event) => {
+                setForm((prev) => ({ ...prev, startDate: event.target.value }));
+                setEntries((prev) =>
+                  prev.map((e) =>
+                    e.id === entry.id
+                      ? { ...e, startDate: event.target.value }
+                      : e
+                  )
+                );
+              }}
+            />
+          </InputContainer>
+          <InputContainer>
+            <StyledLabel htmlFor="endDate">End Date</StyledLabel>
+            <StyledInput
+              id="endDate"
+              type="date"
+              value={form.endDate}
+              onChange={(event) => {
+                setForm((prev) => ({ ...prev, endDate: event.target.value }));
+                setEntries((prev) =>
+                  prev.map((e) =>
+                    e.id === entry.id
+                      ? { ...e, endDate: event.target.value }
+                      : e
+                  )
+                );
+              }}
+            />
+          </InputContainer>
+          <InputContainer>
+            <StyledLabel htmlFor="location">Location</StyledLabel>
+            <StyledInput
+              id="location"
+              type="text"
+              value={form.location}
+              onChange={(event) => {
+                setForm((prev) => ({ ...prev, location: event.target.value }));
+                setEntries((prev) =>
+                  prev.map((e) =>
+                    e.id === entry.id
+                      ? { ...e, location: event.target.value }
+                      : e
+                  )
+                );
+              }}
+            />
+          </InputContainer>
+        </InputGroupContainer>
+        <AddButton>Done</AddButton>
+      </StyledForm>
+    </div>
   );
 }

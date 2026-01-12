@@ -10,12 +10,21 @@ import {
   StyledLabel,
   StyledTextarea,
 } from "../../../styled-components/styled-components";
+import { useState } from "react";
 
 export default function PracticalEntryForm({
   entry,
   setEntries,
   setShowEntryForm,
 }) {
+  const [form, setForm] = useState(() => ({
+    jobTitle: entry.jobTitle ?? "",
+    employer: entry.employer ?? "",
+    startDate: entry.startDate ?? "",
+    endDate: entry.endDate ?? "",
+    location: entry.location ?? "",
+    description: entry.description ?? "",
+  }));
   function handleDeleteEntry() {
     setEntries((prev) => {
       return prev.filter((e) => e.id !== entry.id);
@@ -33,28 +42,30 @@ export default function PracticalEntryForm({
         <StyledLabel htmlFor="jobTitle">Job Title</StyledLabel>
         <StyledInput
           type="text"
-          value={entry.jobTitle}
-          onChange={(event) =>
-            setEntries((prev) => {
-              return prev.map((e) =>
+          value={form.jobTitle}
+          onChange={(event) => {
+            setForm((prev) => ({ ...prev, jobTitle: event.target.value }));
+            setEntries((prev) =>
+              prev.map((e) =>
                 e.id == entry.id ? { ...e, jobTitle: event.target.value } : e
-              );
-            })
-          }
+              )
+            );
+          }}
         />
       </InputContainer>
       <InputContainer>
         <StyledLabel htmlFor="employer">Employer</StyledLabel>
         <StyledInput
           type="text"
-          value={entry.employer}
-          onChange={(event) =>
-            setEntries((prev) => {
-              return prev.map((e) =>
+          value={form.employer}
+          onChange={(event) => {
+            setForm((prev) => ({ ...prev, employer: event.target.value }));
+            setEntries((prev) =>
+              prev.map((e) =>
                 e.id == entry.id ? { ...e, employer: event.target.value } : e
-              );
-            })
-          }
+              )
+            );
+          }}
         />
       </InputContainer>
       <InputGroupContainer>
@@ -62,42 +73,45 @@ export default function PracticalEntryForm({
           <StyledLabel htmlFor="startDate">Start Date</StyledLabel>
           <StyledInput
             type="date"
-            value={entry.startDate}
-            onChange={(event) =>
-              setEntries((prev) => {
-                return prev.map((e) =>
+            value={form.startDate}
+            onChange={(event) => {
+              setForm((prev) => ({ ...prev, startDate: event.target.value }));
+              setEntries((prev) =>
+                prev.map((e) =>
                   e.id == entry.id ? { ...e, startDate: event.target.value } : e
-                );
-              })
-            }
+                )
+              );
+            }}
           />
         </InputContainer>
         <InputContainer>
           <StyledLabel htmlFor="endDate">End Date</StyledLabel>
           <StyledInput
             type="date"
-            value={entry.endDate}
-            onChange={(event) =>
-              setEntries((prev) => {
-                return prev.map((e) =>
+            value={form.endDate}
+            onChange={(event) => {
+              setForm((prev) => ({ ...prev, endDate: event.target.value }));
+              setEntries((prev) =>
+                prev.map((e) =>
                   e.id == entry.id ? { ...e, endDate: event.target.value } : e
-                );
-              })
-            }
+                )
+              );
+            }}
           />
         </InputContainer>
         <InputContainer>
           <StyledLabel htmlFor="location">Location</StyledLabel>
           <StyledInput
             type="text"
-            value={entry.location}
-            onChange={(event) =>
-              setEntries((prev) => {
-                return prev.map((e) =>
+            value={form.location}
+            onChange={(event) => {
+              setForm((prev) => ({ ...prev, location: event.target.value }));
+              setEntries((prev) =>
+                prev.map((e) =>
                   e.id == entry.id ? { ...e, location: event.target.value } : e
-                );
-              })
-            }
+                )
+              );
+            }}
           />
         </InputContainer>
       </InputGroupContainer>
@@ -106,14 +120,15 @@ export default function PracticalEntryForm({
         <StyledTextarea
           id="description"
           rows={10}
-          value={entry.description}
-          onChange={(event) =>
-            setEntries((prev) => {
-              return prev.map((e) =>
+          value={form.description}
+          onChange={(event) => {
+            setForm((prev) => ({ ...prev, description: event.target.value }));
+            setEntries((prev) =>
+              prev.map((e) =>
                 e.id == entry.id ? { ...e, description: event.target.value } : e
-              );
-            })
-          }
+              )
+            );
+          }}
         ></StyledTextarea>
       </InputContainer>
       <AddButton>Done</AddButton>

@@ -51,6 +51,7 @@ export default function EductionalForm({
         </>
       ) : (
         <EducationalEntryForm
+          key={currentEntry.id}
           entry={currentEntry}
           setEntries={setEntries}
           setShowEntryForm={setShowEntryForm}

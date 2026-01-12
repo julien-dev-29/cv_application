@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {
   AddButton,
+  Card,
   InputContainer,
   StyledInput,
   StyledLabel,
@@ -22,7 +23,7 @@ export default function PersonalForm({
     setShowGeneralForm(false);
   }
   return (
-    <div>
+    <Card>
       <StyleHeader>General Informations</StyleHeader>
       <StyledForm onSubmit={handleSubmit}>
         <InputContainer>
@@ -79,6 +80,6 @@ export default function PersonalForm({
         </InputContainer>
         <AddButton>Done</AddButton>
       </StyledForm>
-    </div>
+    </Card>
   );
 }
